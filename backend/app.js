@@ -2,12 +2,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
-
-
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.json({"message": "Welcome"});
 });
 
 mongoose.connect("mongodb://localhost:27017/classManagement",(error)=>{
@@ -17,9 +17,9 @@ mongoose.connect("mongodb://localhost:27017/classManagement",(error)=>{
     console.log("not connected")
   }
 })
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+
+require('./src/routes/user.routes')(app);
 
 app.listen(8000, () => {
-  console.log('Example app listening on port 8000!')
+  console.log('listening on port 8000!')
 });
