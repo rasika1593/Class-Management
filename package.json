@@ -13,13 +13,19 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
+    "dev": "cd backend && npm run start-dev",
     "start": "react-scripts start",
+    "start-dev": "concurrently -k  \"npm:dev\" \"cross-env REACT_APP_NODE_SERVER='true' react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2"
   },
   "browserslist": {
     "production": [
