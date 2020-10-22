@@ -5,9 +5,10 @@ exports.checkUser =  (req, res) =>{
     try{
     let status=false
     const user = userModel.find({
-        $and:
-        [{email_id:req.body.email_id},
-        {password:req.body.password}]
+        email_id:req.body.email_id
+        // $and:
+        // [{email_id:req.body.email_id},
+        // {password:req.body.password}]
         
     }).then(data=>{
        if(data.length!==0){
