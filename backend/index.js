@@ -25,6 +25,7 @@ mongoose.connect("mongodb://localhost:27017/classManagement",(error)=>{
 require('./src/routes/user.routes')(app);
 require('./src/routes/registration.routes')(app);
 require('./src/routes/login.routes')(app);
+require('./src/routes/tax.routes')(app);
 
 app.listen(8000, () => {
   console.log('listening on port 8000!')

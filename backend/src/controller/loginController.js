@@ -5,7 +5,10 @@ exports.checkUser =  (req, res) =>{
     try{
     let status=false
     const user = userModel.find({
-        email_id:req.body.email_id
+        $and:
+        [{email_id:req.body.email_id},
+        {password:req.body.password}]
+        
     }).then(data=>{
        if(data.length!==0){
             status =  bcrypt.compareSync(req.body.password, data[0].password)
